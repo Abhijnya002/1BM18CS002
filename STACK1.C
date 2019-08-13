@@ -1,58 +1,56 @@
+
 #include<stdio.h>
 #include<conio.h>
-void push(int ele,int s[100],int *t);
-int pop(int s[100],int *t);
-void dis(int s[100],int t);
+int stack[100];
+int top=-1;
+void push(int ele);
+int pop();
+void display();
 int main()
 {
-	int st[100],top=-1,e;
-	clrscr();
-	push(1,st,&top);
-	push(2,st,&top);
-	push(3,st,&top);
-	dis(st,top);
-	e=pop(st,&top);
+	int e;
+	push(1);
+	push(2);
+	push(3);
+	display();
+	e=pop();
 	if(e!=-9999)
+	{
 	printf("popped ele is %d\n",e);
-	else
-	printf("empty");
-	dis(st,top);
+	}
+	display();
 	getch();
 	return 0;
 }
-void push(int ele,int s[100],int *t)
+void push(int ele)
 {
-	if(*t==99)
+	if(top==99)
 	{
-	printf("overflow");
-	return;
+		printf("stack is overflow\n");
+		return;
 	}
-	*t=*t+1;
-	s[*t]=ele;
+	stack[++top]=ele;
 }
-int pop(int s[100],int *t)
+int pop()
 {
-	int ele;
-	if(*t==-1)
+	if(top==-1)
 	{
-	printf("underflow");
-	return -9999;
+		printf("stack is underflow\n");
+		return -9999;
 	}
-	ele=s[*t];
-	*t=*t-1;
-	return ele;
+	return stack[top--];
 }
-void dis(int s[100],int t)
+void display()
 {
 	int i;
-	if(t==-1)
+	if(top==-1)
 	{
-	printf("stack is empty\n");
-	return;
+		printf("stack is empty\n");
+		return;
 	}
-	printf("contents of stack\n");
-	for(i=t;i>=0;i--)
+	printf("contents of stack is\n");
+	for(i=top;i>=0;i--)
 	{
-	printf("%d\n",s[i]);
+	printf("%d\n",stack[i]);
 	}
 }
