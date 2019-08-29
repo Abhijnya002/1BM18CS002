@@ -1,17 +1,20 @@
+
 #include<stdio.h>
-#include<conio.h>
+#include<stdlib.h>
 #include<string.h>
-#include<math.h>
-void main()
+int compute(char symbol,int op1,int op2);
+int main()
 {
 
 	int s[100];
 	int op1,op2,result;
 	int top=-1,i;
 	char postfix[20],symbol;
-	clrscr();
 	printf("enter postfix expression=");
-	scanf("%s",postfix);
+	if(scanf("%s",postfix)==1)
+    {
+        printf("%s",postfix);
+    }
 	for(i=0;postfix[i]!='\0';i++)
 	{
 		symbol=postfix[i];
@@ -29,7 +32,7 @@ void main()
 	}
 	result=s[top--];
 	printf("result=%d\n",result);
-	getch();
+    return 0;
 }
 int compute(char symbol,int op1,int op2)
 {
@@ -39,8 +42,12 @@ int compute(char symbol,int op1,int op2)
 		case '-':return (op1-op2);
 		case '*':return (op1*op2);
 		case '/':return (op1/op2);
-		case '^':return (pow(op1,op2));
 		default:return 0;
 	}
 
 }
+
+
+
+
+
