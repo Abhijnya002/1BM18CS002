@@ -29,6 +29,7 @@ float compute(int op1,int op2,char symbol)
 		case '-':return (op1-op2);
 		case '*':return (op1*op2);
 		case '/':return (op1/op2);
+		case '^':return(pow(op1,op2));
 		default:return 0;
 	}
 }
@@ -47,7 +48,7 @@ int main()
 		symbol=postfix[i];
 		if(symbol>='0'&&symbol<='9')
 		{
-			push((postfix[i]-'0'),s,&top);
+			push((symbol-'0'),s,&top);
 		}
 		else
 		{
