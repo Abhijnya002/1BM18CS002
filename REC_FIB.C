@@ -1,15 +1,12 @@
 #include<stdio.h>
-#include<conio.h>
 int fib(int n);
 int main()
 {
 	int f,n;
-	clrscr();
 	printf("enter n=");
 	scanf("%d",&n);
 	f=fib(n);
 	printf("%d\n",f);
-	getch();
 	return 0;
 }
 int fib(int n)
