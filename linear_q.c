@@ -21,7 +21,6 @@ int delet(int q[],int *f,int *r)
 		printf("queue is empty\n");
 		return -9999;
 	}
-	item=q[*f];
 	if(*f>*r)
 	{
 		
