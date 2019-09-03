@@ -52,7 +52,7 @@ int main()
 {
 	int q[size],item,ch,ch_q;
 	int f=-1,r=-1,e,s,i,n;
-	printf("enter choice=");
+	printf("enter 1 to insert,2 to delete,3 to display,0 to exit=");
 	scanf("%d",&ch);
 	while(ch!=0){
 	switch(ch)
