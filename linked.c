@@ -140,7 +140,40 @@ void display(NODE head)
 		p=p->next;
 	}
 }
-	
+output=
+	Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display
+1
+enter the ele=
+10
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+1
+enter the ele=
+20
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+1
+enter the ele=
+30
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+4
+contents of list=
+30
+20
+10
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+3
+enter the ele and position=
+90
+2
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+4
+contents of list=
+30
+90
+20
+10
+again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=
+0
+
 
 
 
