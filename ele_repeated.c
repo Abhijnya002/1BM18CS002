@@ -41,13 +41,13 @@ int main()
 		case 5:printf("enter the element to be deleted=\n");
 			scanf("%d",&ele);
 			c= check_list( ele, head);
-			if(c==2)
+			if(c>1)
 			{
-			head=delete_ele_repeated(head,ele);
+				head=delete_ele_repeated(head,ele);
 			}
 			else
 			{
-			head=delete_ele(head,ele);
+				head=delete_ele(head,ele);
 			}
 			break;
 		
