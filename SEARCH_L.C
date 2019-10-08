@@ -1,6 +1,5 @@
 #include<stdlib.h>
 #include<stdio.h>
-#include<conio.h>
 struct node
 {
 	int data;
@@ -86,7 +85,6 @@ int main()
 {
 	NODE head=NULL;
 	int n,ele,item;
-	clrscr();
 	printf("enter 1 to insert,2 to dispaly,3 to search\n");
 	scanf("%d",&n);
 	while(n!=0)
@@ -109,7 +107,7 @@ int main()
 	printf("enter your choice to continue else 0 to exit\n");
 	scanf("%d",&n);
 }
-			getch();
+			
 			return 0;
 }
 	
