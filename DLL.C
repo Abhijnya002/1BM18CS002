@@ -10,6 +10,7 @@ struct node
 typedef struct node *NODE;
 void display(NODE head);
 NODE insert_front(int item,NODE head);
+NODE delete_pos(NODE head,int pos);
 NODE getnode();
 NODE insert_left(NODE head,int item,NODE n);
 NODE insert_end(NODE head,int item);
@@ -46,7 +47,11 @@ int main()
 			}
 			break;
 		case 4:display(head);
-		default:break;
+		break;
+		case 5:printf("enter the pos=\n");
+	 		scanf("%d",&position);
+			head=delete_pos(head,position);
+			break;
 	}
 	printf("again Enter 1 to inser at the front,3 to insert at a given position,2 to insert at the end,4 to display=\n");
 	scanf("%d",&ch);
@@ -150,5 +155,63 @@ void display(NODE head)
 	{
 		printf("%d\n",p->data);
 		p=p->next;
+	}
+}
+NODE delete_pos(NODE head,int pos)
+{
+	NODE curr,prev=NULL,q,p;
+	int count=1;
+	if(head->next==NULL)
+	{
+		if(pos==1)
+		{
+			free(curr);
+		}
+	
+		else
+		{
+			printf("invalid position\n");
+			return head;
+		}	
+	}
+	if(pos==1)
+	{
+		p=head;
+		q=head;
+		q=q->next;
+		head=q;
+		printf("deleted ele is %d\n",p->data);
+		free(p);
+		return head;
+	}
+	else
+	{
+		curr=head;
+		while(curr!=NULL&&count!=pos)
+		{
+			prev=curr;
+			curr=curr->next;
+			count++;
+		}
+		q=curr->next;
+		if (curr->next==NULL)
+		{
+			curr->prev->next=NULL;
+			free(curr);
+			return head;
+		}
+		if(count==pos)
+		{
+			prev->next=q;
+			q->prev=prev;
+			free(curr);
+			return head;
+		}
+	
+		else if(count!=pos)
+		{
+			printf("invalid position");
+			return head;
+		}
 	}
 }
