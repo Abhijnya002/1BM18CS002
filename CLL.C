@@ -9,7 +9,10 @@ struct node
 typedef struct node *NODE;
 void display(NODE head);
 NODE insert_front(int item,NODE head);
+void minNode();
+void DeleteAllEvenNode(NODE head) ;
 NODE getnode();
+int Length(NODE head) ;
 NODE insert_end(NODE head,int item);
 int main()
 {
@@ -102,9 +105,75 @@ void display(NODE head)
 		return;
 	}
 	p=head->next;
-	while(p!=head->next)
+	do
 	{
 		printf("%d\n",p->data);
 		p=p->next;
-	}
+	}while(p!=head->next);
 }
+void minNode()
+{  
+    struct node *current = head;   
+    int min = head->data;  
+    if(head == NULL) 
+{  
+        printf("\nList is empty");  
+ }  
+    else
+ {  
+         do{  
+             if(min > current->data) {  
+                 min = current->data;  
+             }  
+             current= current->next;  
+        }while(current != head);  
+          
+        printf("Minimum value node in the list: %d", min);  
+    }  
+}  
+int Length(NODE head) 
+{ 
+    NODE  current = head; 
+    int count = 0; 
+    if (head == NULL) { 
+        return 0; 
+    } 
+    else { 
+        do { 
+            current = current->next; 
+            count++; 
+        } while (current != head); 
+    } 
+    return count; 
+}   
+void DeleteAllEvenNode(NODE head) 
+{ 
+    
+    int len = Length(head);
+    int count = 1; 
+    NODE previous = head, next = head; 
+    if (head == NULL) { 
+        printf("\nList is empty\n"); 
+        return; 
+    }
+    if (len < 2) { 
+        return; 
+    }
+    previous = head;
+    next = previous->next; 
+  
+    while (len > 0) 
+    { 
+        if (count % 2 == 0) 
+	{ 
+            previous->next = next->next; 
+            free(next); 
+            previous = next->next; 
+            next = previous->next; 
+        }
+        len--; 
+        count++; 
+    } 
+  
+    return; 
+} 
