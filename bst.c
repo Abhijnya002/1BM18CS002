@@ -23,6 +23,7 @@ int main()
 	int ele,ch,n,i;
 	int key,level;
 	NODE root=NULL;
+	 int level;
 	printf("1.insert\n2.inorder\n3.preorder\n4.postorder\n5.delete\n6.max\n7.display\n8.level order=");
 	scanf("%d",&ch);
 	while(ch!=0)
@@ -57,11 +58,22 @@ int main()
 		case 8:printf("level order traversal is\n");
 			printlevelorder(root);
 			break;
+		case 9: for (x = 1; x <=5; x++) 
+  			  { 
+     				  level = getLevel(root, x); 
+     				 if (level) 
+     				   printf(" Level of %d is %d\n", x, getLevel(root, x)); 
+     				 else
+     				   printf(" %d is not present in tree \n", x); 
+  	
+   			 }break; 
 		
 	}
 printf("1.insert\n2.inorder\n3.preorder\n4.postorder\n5.delete\n6.max\n7.display\n8.level order=");
 	scanf("%d",&ch);
 	}
+	 
+   
 }
 void inorder(NODE root)
 {
@@ -197,4 +209,23 @@ void printlevelorder(NODE root)
 	display(root,i);
 	}
 }
-
+int getLevelUtil(NODE root, int data, int level) 
+{ 
+    if (root == NULL) 
+        return 0; 
+  
+    if (root->data == data) 
+        return level; 
+  
+    int downlevel = getLevelUtil(root->left, data, level+1); 
+    if (downlevel != 0) 
+        return downlevel; 
+  
+    downlevel = getLevelUtil(root->right, data, level+1); 
+    return downlevel; 
+} 
+  
+int getLevel(NODE root, int data) 
+{ 
+    return getLevelUtil(root,data,1); 
+} 
