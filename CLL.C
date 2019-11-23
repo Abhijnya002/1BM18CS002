@@ -13,7 +13,10 @@ void minNode();
 void DeleteAllEvenNode(NODE head) ;
 NODE getnode();
 int Length(NODE head) ;
+void DeleteFirst(NODE head) ;
+void DeleteAllOddNode(NODE head) ;
 NODE insert_end(NODE head,int item);
+void deleteNode(NODE head, NODE del) ;
 int main()
 {
 	NODE head=NULL;
@@ -175,5 +178,70 @@ void DeleteAllEvenNode(NODE head)
         count++; 
     } 
   
+    return; 
+} 
+void DeleteAllOddNode(NODE head) 
+{ 
+    int len = Length(head); 
+    int count = 0; 
+    NODE previous = head, next = head; 
+    if (*head == NULL) { 
+        printf("\nDelete Last List is empty\n"); 
+        return head; 
+    } 
+    if (len == 1) { 
+        DeleteFirst(head); 
+        return; 
+    }  
+    while (len > 0) 
+    { 
+        if (count == 0) { 
+            DeleteFirst(head); 
+        }
+        if (count % 2 == 0 && count != 0) { 
+            deleteNode(*head, previous); 
+        } 
+        previous = previous->next; 
+        next = previous->next; 
+        len--; 
+        count++; 
+    } 
+  
+    return; 
+} 
+void deleteNode(NODE head, NODE del) 
+{ 
+    NODE temp = head;
+    if (head == del) { 
+        head= del->next; 
+    } 
+    while (temp->next != del) { 
+        temp = temp->next; 
+    } 
+    temp->next = del->next;
+    free(del);
+    return; 
+}
+void DeleteFirst(NODE head) 
+{ 
+     NODE previous head, next = head;
+    if (head == NULL) { 
+        printf("\nList is empty\n"); 
+        return; 
+    }
+    if (previous->next == previous) { 
+        head = NULL; 
+        return; 
+    } 
+ 
+    while (previous->next != head) 
+    { 
+        previous = previous->next; 
+        next = previous->next; 
+    } 
+   
+    previous->next = next->next; 
+    head = previous->next; 
+    free(next); 
     return; 
 } 
