@@ -18,6 +18,7 @@ NODE min(NODE root);
 int height(NODE head);
 int max(NODE root);
 void display(NODE root,int level);
+unsigned int getfullCount(NODE root) ;
 int main()
 {
 	int ele,ch,n,i;
@@ -67,7 +68,9 @@ int main()
      				   printf(" %d is not present in tree \n", x); 
   	
    			 }break; 
-		
+		case 10:level=getfullCount( root);
+			printf("total nodes=%d",level);
+			break;
 	}
 printf("1.insert\n2.inorder\n3.preorder\n4.postorder\n5.delete\n6.max\n7.display\n8.level order=");
 	scanf("%d",&ch);
@@ -229,3 +232,17 @@ int getLevel(NODE root, int data)
 { 
     return getLevelUtil(root,data,1); 
 } 
+unsigned int getfullCount(NODE root) 
+{ 
+    if (root == NULL) 
+       return 0; 
+   
+    int res = 0; 
+    if  (root->left && root->right)  
+       res++; 
+   
+    res += (getfullCount(root->left) +  
+            getfullCount(root->right)); 
+    return res; 
+} 
+   
