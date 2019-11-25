@@ -8,6 +8,7 @@ struct node
 };
 typedef struct node *NODE;
 void display(NODE head);
+	void printMinMax(NODE head) ;
 NODE insert_front(int item,NODE head);
 NODE getnode();
 NODE insert_end(NODE head,int item);
@@ -41,7 +42,9 @@ int main()
 			head=insert_pos(head,ele,value);
 			break;
 		case 5:display(head);
-		default:break;
+			break;
+		case 6:	 printMinMax( head) ;
+			break;
 	}
 	printf("again Enter 1 to inser at the front,3 to insert at a given position,4 to insert left,2 to insert at the end,5 to display=\n");
 	scanf("%d",&ch);
@@ -205,4 +208,30 @@ NODE insert_left(NODE head,int item,int value)
 		printf("value is not found in list\n");
 		return head;
 	}
+	void printMinMax(NODE head) 
+{ 
+    if (head == NULL) { 
+        return; 
+    } 
+  NODE current;  
+    current = head; 
+    int min = INT_MAX, max = INT_MIN; 
+    while (current->next != head)
+ { 
+        if (current->data < min)
+ { 
+            min = current->data; 
+        } 
+  
+       
+        if (current->data > max) { 
+            max = current->data; 
+        } 
+  
+        current = current->next; 
+    } 
+  
+    printf("minimun=%d\nmax=%d",min,max); 
+} 
+  
 }
