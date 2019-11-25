@@ -232,17 +232,14 @@ int getLevel(NODE root, int data)
 { 
     return getLevelUtil(root,data,1); 
 } 
-unsigned int getfullCount(NODE root) 
-{ 
-    if (root == NULL) 
-       return 0; 
-   
-    int res = 0; 
-    if  (root->left && root->right)  
-       res++; 
-   
-    res += (getfullCount(root->left) +  
-            getfullCount(root->right)); 
-    return res; 
-} 
-   
+int countt(NODE root)
+{
+    unsigned int count = 1;
+    if (root->lchild != NULL) {
+       count += countt(root->lchild);
+    }
+    if (root->right != NULL) {
+        count += countt(root->rchild);
+    }
+    return count;
+}
