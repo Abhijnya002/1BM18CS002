@@ -8,14 +8,14 @@ struct node
 };
 typedef struct node *NODE;
 void display(NODE head);
-int printMin(NODE head) ;
+
 NODE insert_front(int item,NODE head);
 NODE getnode();
 NODE insert_end(NODE head,int item);
 NODE insert_pos(NODE head,int item,int pos);
 NODE insert_left(NODE head,int item,int value);
-NODE exchange(NODE head,int min,int max);
-int printMax(NODE head) ;
+NODE exchange(NODE head);
+
 int main()
 {
 	NODE head=NULL;
@@ -44,13 +44,8 @@ int main()
 			break;
 		case 5:display(head);
 			break;
-		case 6:	min=printMin( head) ;
-			printf("min=%d\n",min);
-			break;
-		case 7:	max=printMax( head) ;
-			printf("max=%d\n",max);
-			break;
-		case 8:head=exchange(head,min,max);
+		
+		case 6:head=exchange(head);
 			break;
 	}
 	printf("again Enter 1 to inser at the front,3 to insert at a given position,4 to insert left,2 to insert at the end,5 to display=\n");
@@ -216,51 +211,39 @@ NODE insert_left(NODE head,int item,int value)
 		return head;
 	}
 }
-int printMin(NODE head) 
+NODE exchange(NODE head) 
 { 
     if (head == NULL) { 
         return 0; 
     } 
-  NODE current,current;  
-    current = head; 
-    int min =1000, max =-1; 
-    while (current->next != head)
+  NODE curr1,curr,p,q;  
+    curr = head; 
+    int min =1000, max =-1,temp; 
+    while (curr->next != head)
  { 
-        if (current->data < min)
- { 
-            min = current->data; 
+        if (curr->data < min)
+ 	{ 
+            min = curr->data; 
+		p=curr;
         } 
-  
-       
-  
-        current = current->next; 
-    } 
-  
-    return min; 
-} 
-int printMax(NODE head) 
-{ 
-    if (head == NULL) { 
-        return 0; 
-    } 
-  NODE current;  
-    current = head; 
-    int min =1000, max =-1; 
-    while (current->next != head)
- { 
-        
-  
-        current = current->next; 
-    } 
-  
-    return max; 
-} 
-NODE exchange(NODE head,int min,int max)
-{
-	int temp;
-	temp=min;
-	min=max;
-	max=temp;
-	return head;
+	 curr=curr->next;
 }
+curr=head;
+ while (curr->next != head)
+ { 
+  	 if (curr->data > max)
+ 	{ 
+            max = curr->data; 
+		q=curr;
+        } 
+       curr=curr->next;
+  	
+    } 
+temp=p->data;
+	p->data=q->data;
+	q->data=temp;
+        return head;
+  
+    
+} 
 
